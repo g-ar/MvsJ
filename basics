@@ -1,0 +1,46 @@
+// A short comparison of J and Mathematica, first line shows the M way and then the J way
+
+Assignment
+l={1,7,3,6} (* or l=List[1,7,3,6] *)
+l=:1,7,3,6 NB. or l=:1 7 3 6
+
+First 10 integers, starting from 1
+Range[10] or Table[i,{i,10}] or Table[i,{i,1,10}]
+1+i.10
+
+Sum of the list
+Total[Range[10]]
++/1+i.10
+
+Sum of squares
+Total[Range[10]^2]
++/(1+i.10)^2
+
+Cumulative sum
+Accumulate[Range[10]]
++/\1+i.10
+
+Random integers
+RandomInteger[10,10]
+1+?10#10
+
+Random reals 
+RandomReal[1,10]
+?10#0
+
+Average of list
+Mean[RandomReal[1,1000000]]
+(+/%#)?1e6#0
+
+Moving average
+MovingAverage[RandomReal[1,10], 3]
+3 (+/%#)\ ?10#0
+
+Moving sum
+Total[Partition[Range[10], 3, 1] , {2}]
+3+/\1+i.10
+
+Product of two matrices
+Partition[Range[9], 3].Partition[Range[9], 3] (* or *) #.# & @ Partition[Range[9], 3]
+(+/ . *)~ 3 3 $ 1+i.9
+
